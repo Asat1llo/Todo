@@ -1,5 +1,5 @@
 const elTodotext = document.querySelector('.todo__container__text')
-const elContainer = document.querySelector('.todo__container')
+const elContainer = document.querySelector('.todo__list')
 
 let array = []
 
@@ -10,24 +10,27 @@ function onClick1() {
     onMap()
 }
 
-function onCreat(items) {
-    const valuetext = document.createElement('p')
-    valuetext.classList.add('text')
-    if (items == "." || items == "  ") {
-        console.log('error');
-    }
-    else  {
-        valuetext.innerHTML = items
-        elContainer.append(valuetext)
-        elTodotext.value = null
-        array = []
-    }
-}
-
-
 function onMap() {
     event.preventDefault()
     array.forEach((items, index) => {
         onCreat(items)
     });
 }
+
+
+function onCreat(items) {
+    const valuetext = document.createElement('li')
+    valuetext.classList.add('text')
+    elContainer.append(valuetext)   
+    
+    if (items == "." || items == null) {
+        console.log('error');
+    }
+    else  {
+        valuetext.innerHTML = items
+        elTodotext.value = null
+        array = []
+    }
+}
+
+
