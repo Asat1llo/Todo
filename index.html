@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <title>Todo</title>
+    <title>Todo List</title>
 </head>
 <body>
-    <div class="todo__wrraper" >
-      <form class="todo__container" >
-        <input type="text" class="todo__container__text" placeholder="Type here">
-        <button class="todo__container__submit" onclick="onClick1()">Add</button>
-      </form>
-      <ul class="todo__list"></ul>
+    <div class="todo__wrapper">
+        <form class="todo__form">
+            <input type="text" class="todo__input" placeholder="Yozing...">
+            <button class="todo__add" onclick="addTodo(event)">Qo‘shish</button>
+        </form>
+        <ul class="todo__list"></ul>
     </div>
     <script src="./index.js"></script>
 </body>

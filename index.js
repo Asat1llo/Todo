@@ -1,38 +1,38 @@
-const elTodotext = document.querySelector('.todo__container__text')
-const elContainer = document.querySelector('.todo__list')
+document.addEventListener("DOMContentLoaded", function () {
+    const input = document.querySelector(".todo__input");
+    const list = document.querySelector(".todo__list");
 
+    window.addTodo = function (event) {
+        event.preventDefault();
+        if (input.value.trim() === "") return;
 
-function onClick1() {
-    event.preventDefault()
-    const elValue = elTodotext.value
-    if (elValue == "") {
-        elTodotext.classList.add('active__input')
-    }
-    else {
-        const li = document.createElement('li')
-        const p = document.createElement('p')
-        const delet = document.createElement('button')
-        elTodotext.classList.remove('active__input')
+        const li = document.createElement("li");
+        li.classList.add("todo__item");
 
-        li.classList.add('todo__link')
-        delet.classList.add('todo__delete')
-        p.classList.add('text')
+        const p = document.createElement("p");
+        p.classList.add("todo__text");
+        p.innerText = input.value;
 
-        elContainer.append(li)
-        li.append(p)
-        li.append(delet)
-        p.innerHTML = elValue
-    }
-    
-    elTodotext.value = ""
-}
+        const completeBtn = document.createElement("button");
+        completeBtn.classList.add("todo__complete");
+        completeBtn.innerText = "✔";
+        completeBtn.onclick = function () {
+            li.classList.toggle("completed");
+        };
 
-elContainer.addEventListener('click',function(e){
-    if(e.target.tagName === "LI"){
-        e.target.classList.toggle('active')
-    }
-    else if (e.target.classList == "todo__delete"){
-        e.target.parentElement.remove()
-    }
-},false)
+        const deleteBtn = document.createElement("button");
+        deleteBtn.classList.add("todo__delete");
+        deleteBtn.innerText = "❌";
+        deleteBtn.onclick = function () {
+            li.style.animation = "fadeOut 0.3s forwards";
+            setTimeout(() => li.remove(), 300);
+        };
 
+        li.appendChild(p);
+        li.appendChild(completeBtn);
+        li.appendChild(deleteBtn);
+        list.appendChild(li);
+
+        input.value = "";
+    };
+});
